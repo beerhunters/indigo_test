@@ -62,7 +62,7 @@ def create_user(name: str, email: str, db: Session = Depends(get_db)):
 
 @app.put("/users/{user_id}")
 def update_user(user_id: int, name: str, email: str, db: Session = Depends(get_db)):
-    user = db.query(User).filter(User.id == user_id).first()
+    user = db.query(User).filter(User.id == user_id).first()  # type: ignore
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
     user.name = name
@@ -74,7 +74,7 @@ def update_user(user_id: int, name: str, email: str, db: Session = Depends(get_d
 
 @app.delete("/users/{user_id}")
 def delete_user(user_id: int, db: Session = Depends(get_db)):
-    user = db.query(User).filter(User.id == user_id).first()
+    user = db.query(User).filter(User.id == user_id).first()  # type: ignore
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
     db.delete(user)
@@ -94,7 +94,7 @@ def create_movie(title: str, description: str, db: Session = Depends(get_db)):
 
 @app.put("/movies/{movie_id}")
 def update_movie(movie_id: int, title: str, description: str, db: Session = Depends(get_db)):
-    movie = db.query(Movie).filter(Movie.id == movie_id).first()
+    movie = db.query(Movie).filter(Movie.id == movie_id).first()  # type: ignore
     if not movie:
         raise HTTPException(status_code=404, detail="Movie not found")
     movie.title = title
@@ -106,7 +106,7 @@ def update_movie(movie_id: int, title: str, description: str, db: Session = Depe
 
 @app.delete("/movies/{movie_id}")
 def delete_movie(movie_id: int, db: Session = Depends(get_db)):
-    movie = db.query(Movie).filter(Movie.id == movie_id).first()
+    movie = db.query(Movie).filter(Movie.id == movie_id).first()  # type: ignore
     if not movie:
         raise HTTPException(status_code=404, detail="Movie not found")
     db.delete(movie)
@@ -126,7 +126,7 @@ def add_to_favorites(user_id: int, movie_id: int, db: Session = Depends(get_db))
 
 @app.delete("/favorites/")
 def remove_from_favorites(user_id: int, movie_id: int, db: Session = Depends(get_db)):
-    favorite = db.query(Favorite).filter(Favorite.user_id == user_id, Favorite.movie_id == movie_id).first()
+    favorite = db.query(Favorite).filter(Favorite.user_id == user_id, Favorite.movie_id == movie_id).first()  # type: ignore
     if not favorite:
         raise HTTPException(status_code=404, detail="Favorite not found")
     db.delete(favorite)
@@ -136,5 +136,5 @@ def remove_from_favorites(user_id: int, movie_id: int, db: Session = Depends(get
 
 @app.get("/favorites/{user_id}")
 def get_favorites(user_id: int, db: Session = Depends(get_db)):
-    favorites = db.query(Favorite).filter(Favorite.user_id == user_id).all()
+    favorites = db.query(Favorite).filter(Favorite.user_id == user_id).all()  # type: ignore
     return [{"movie_id": fav.movie_id, "movie_title": fav.movie.title} for fav in favorites]
