@@ -1,18 +1,18 @@
 INDIGO VC/MultiVerseSoft Test Task
 
-Тестовое задание для python-разработчика:
+Test task for python developer:
 
-Нужно написать mini API для фильмотеки со следующей структурой:
-1. Пользователи
-  •  Возможность создания пользователей.
-  •  Возможность изменения данных пользователя.
-  •  Возможность удаления пользователя.
-2. Фильмы
-  •  Возможность добавления новых фильмов.
-  •  Возможность изменения данных о фильме.
-  •  Возможность удаления фильмов.
-3. Избранное
-  •  Пользователь может добавлять фильмы в свой список избранного.
-  •  Пользователь может удалять фильмы из своего списка избранного.
-  •  Возможность получения списка избранных фильмов для конкретного пользователя.
-Базу данных можно использовать любую, но подойдет и sqlite.
+You need to write a mini API for a movie library with the following structure:
+1. Users
+  - Ability to create users.
+  - Ability to change user data.
+  - Ability to delete a user.
+2. Movies
+  - Ability to add new movies.
+  - Ability to change movie data.
+  - Possibility to delete movies.
+3. favorites
+  - User can add movies to his favorites list.
+  - User can delete movies from his favorite list.
+  - Possibility to get a list of favorite movies for a particular user.
+Any database can be used but sqlite will do.
